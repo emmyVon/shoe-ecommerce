@@ -1,38 +1,219 @@
-.App {
-  text-align: center;
+:root{
+  --o:orange
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+nav{
+  height: 5rem;
+  margin-bottom: 3rem;
+}
+nav::after{
+  content:'';
+  border: 1px solid lightgrey;
+  display:block;
+  max-width: 1320px;
+  margin-inline: auto;
+
+}
+.nav-container{
+  position: relative;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1320px;
+}
+.nav-left{
+  display: flex;
+  gap:2rem;
+  align-items: center;
+}
+.nav-left li{
+  display: inline-block;
+  margin: 0 1rem;
+  position:relative
+}
+.nav-left li:hover::after{
+  content:'';
+  border: 1px solid var(--o);
+  position: absolute;
+  width: 100%;
+  display: block;
+  margin-top: 1.8rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.nav-right{
+  display:flex;
+  gap:1.5rem;
+  align-items: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.nav-right>div{
+  position: relative;
+ 
+}
+.nav-right>div div{
+  position: absolute;
+  top: -13px;
+  right: 0;
+ background-color: var(--o);
+ padding: 0 8px;
+ border-radius: 10px;
+ font-size:10px;
+ color:white
+}
+.nav-right img:nth-child(2){
+  height: 2rem;
+  width:2rem
+}
+.cart{
+  position: absolute;
+  right: 0;
+  top: 4.5rem;
+  height: 15rem;
+  width: 25rem;
+  background-color: white;
+  box-shadow: -10px 3px 5px 10px whitesmoke ;
+  padding: 2rem;
+  border: 1px solid red;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
+  gap: 2rem;
+  z-index: 1;
+}
+.cart>p{
+  align-self: center;
+  margin-top: 2rem;
+}
+.cart-info{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.cart-info>div{
+  display: flex;
   align-items: center;
+  gap: 2rem;
+}
+.cart img:nth-child(1){
+  height: 3rem;
+  width: 3rem;
+  border-radius: 4px; 
+}
+.cart h2::after{
+  content:'';
+  border: 1px solid lightgrey;
+  display:block;
+}
+.carticon{
+  display: inline-block;
+}
+.carticon svg{
+  fill: #fff;
+}
+.product-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  max-width: 1140px;
+  gap:3rem
+}
+.main-pro{
+  height:30rem;
+  width: 100%;
+  border-radius: 8px;
+}
+.photo-side>div:nth-child(1){
+  position: relative;
+}
+.next,.prev{
+  display:none
+}
+.photo-side>div:nth-child(2){
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.photo-side>div:nth-child(2) img{
+  height: 5rem;
+  width:5rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: ease-out 1s;
+}
+.photo-side>div img:hover{
+  opacity: 0.5;
+  /* border: 4px solid var(--o); */
+}
+.text-side{
+  display:flex;
+  flex-direction: column;
+  gap:2rem
+}
+.text-side>h1{
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.text-side>h3{
+  color:var(--o)
+}
+.button-container{
+  display: flex;
+  gap:1rem;
+  align-items: center;
+}
+button{
+  padding: 0.6rem 0.5rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+.button-container button:nth-child(1){
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.button-container button:nth-child(2){
+  flex: 1;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap:1rem;
+  
+}
+.button-container button:nth-child(2), .cart button{
   color: white;
+  background-color: var(--o);
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media screen and (max-width:750px) {
+  .nav-left ul,.photo-side>div:nth-child(2){
+    display:none
   }
-  to {
-    transform: rotate(360deg);
+  .cart{
+    width: 100%;
   }
+  .product-container{
+    grid-template-columns: 1fr;
+  }
+  .prev,.next{
+    background-color: white;
+    display:block;
+    position :absolute;
+    top:50%
+  }
+  .prev{
+    left:0
+  }
+  .next{
+    right:0
+  }
+  .text-side>div{
+    display:flex;
+    justify-content: space-between;
+  }
+  .button-container{
+    flex-direction: column;
+  }
+  /* .button-container button{
+    flex: 1;
+  } */
 }
