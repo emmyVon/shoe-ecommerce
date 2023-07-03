@@ -188,6 +188,24 @@ button{
   .nav-left ul,.photo-side>div:nth-child(2){
     display:none
   }
+  .showmenu{
+    position: absolute;
+    display: flex;
+    justify-items: flex-start;
+    flex-direction: column;
+    gap: 2rem;
+    font-weight: 700;
+    top: 0;
+    height: 100vh;
+    width: 50%;
+    background-color: #fff;
+    padding: 10px;
+    z-index: 3;
+  }
+  .showmenu img{
+    height: 1.5rem;
+    width: 1.5rem;
+  }
   .cart{
     width: 100%;
   }

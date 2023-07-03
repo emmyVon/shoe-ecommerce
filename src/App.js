@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import logo from './images/logo.svg'
 import menu from './images/icon-menu.svg'
+import close from './images/icon-close.svg'
 import  {ReactComponent as Carticon} from './images/icon-cart.svg'
 import avater from './images/image-avatar.png'
 import plus from './images/icon-plus.svg'
@@ -15,6 +16,8 @@ import Cart from './Cart';
 
 function App() {
   const[itemNo, setItemNo] = useState(0);
+  const[displayCart,setDisplayCart] = useState(false)
+  const[showMenu,setShowmenu] = useState(true)
   const price = 125
   const sum = (quantity)=>price*quantity
   const[cart, setCart] =useState({Added:false,empty:true})
@@ -34,21 +37,22 @@ function App() {
           <div className='container nav-container'>
               <div className='nav-left'>
                 {/* <div></div> */}
-                <img src={menu} alt='menu'/>
+                <img src={menu} alt='menu' onClick={()=>setShowmenu(true)}/>
                 <img src={logo} alt='logo'/>
-                <ul>
+                <ul className={showMenu?'showmenu':''}>
+                  <img src={close} alt='close'/>
                   <li>Collections</li>
                   <li>Men</li>
                   <li>Women</li>
                   <li>About</li>
                   <li>Contact</li>
                 </ul>
-                <Cart sum ={sum} price={price} itemNo={itemNo} cart={cart} setCart={setCart}/>
+                {displayCart&&<Cart sum ={sum} price={price} itemNo={itemNo} cart={cart} setCart={setCart}/>}
               </div> 
               <div className='nav-right'>
                 <div>
                     {cart.Added && itemNo!==0 && !cart.empty?<div className='cart-item'>{itemNo}</div>:''}
-                    <Carticon/>
+                    <Carticon onClick={()=>setDisplayCart(prev=>!prev)}/>
                 </div>
                 <img src={avater} alt='avatar'/>
               </div>
