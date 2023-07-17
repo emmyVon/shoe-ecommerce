@@ -32,15 +32,15 @@ function App() {
 
   
   return (
-    <div className="App">
+    <div className='App'>
         <nav>
           <div className='container nav-container'>
               <div className='nav-left'>
                 {/* <div></div> */}
                 <img src={menu} alt='menu' onClick={()=>setShowmenu(true)}/>
                 <img src={logo} alt='logo'/>
-                <ul className={showMenu?'showmenu':''}>
-                  <img src={close} alt='close'/>
+                <ul className={showMenu?'showmenu menu':'menu'}>
+                  <img src={close} alt='close' onClick={()=>setShowmenu(false)}/>
                   <li>Collections</li>
                   <li>Men</li>
                   <li>Women</li>
@@ -59,7 +59,7 @@ function App() {
           </div>
         </nav>
         <section>
-          <div className='container product-container'>
+          <div className={showMenu?'container product-container overlay':'container product-container'}>
               <Display />
               <div className='text-side'>
                 <h3>sneaker company</h3>
@@ -67,7 +67,7 @@ function App() {
                 <p>enim facilisis gravida neque convallis a cras semper auctor neque vitae tempus quam pellentesque nec nam aliquam sem et tortor consequat id porta nibh venenatis</p>
                 <div>
                   <h1>${price}</h1>
-                  <p style={{textDecoration:'line-through'}}>$250.00</p>
+                  <p style={{textDecoration:'line-through',fontWeight:'bolder',opacity:'0.4'}}>$250.00</p>
                 </div>
                 <div className='button-container'>
                   <button>
