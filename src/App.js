@@ -17,7 +17,7 @@ import Cart from './Cart';
 function App() {
   const[itemNo, setItemNo] = useState(0);
   const[displayCart,setDisplayCart] = useState(false)
-  const[showMenu,setShowmenu] = useState(true)
+  const[showMenu,setShowmenu] = useState(false)
   const price = 125
   const sum = (quantity)=>price*quantity
   const[cart, setCart] =useState({Added:false,empty:true})
